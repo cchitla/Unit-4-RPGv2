@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "Star Jedi";
+    src: url(../fonts/starjedi-webfont.woff);
+}
+
+body {
+    font-family: "Star Jedi", arial;
+    color: black;
+    background-image: url(../images/background.jpg);
+    background-position-y: 85px;
+    background-size: 100%;
+}
+
+.header {
+    background-image: url(../images/stars.jpg);
+    height: 85px;
+    text-align: center;
+    font-size: 3em;
+    letter-spacing: 30px;
+    color: rgb(240, 186, 61);
+}
+
+.text-outline {
+    font-size: 1.5em;
+    text-shadow: -1px -1px 0 rgb(240, 186, 61), 
+                  1px -1px 0 rgb(240, 186, 61),
+                 -1px 1px 0 rgb(240, 186, 61),
+                  1px 1px 0 rgb(240, 186, 61);
+}
+
+button {
+    background-color: black;
+    border: none;
+}
+
+.user-char {
+    height: 300px;
+}
