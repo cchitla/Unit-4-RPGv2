@@ -75,16 +75,16 @@ $(document).ready(function () {
         $(opponent).addClass("defender");
 
         if ($(opponent).attr("name") === "luke") {
-            $(opponent).animate({ top: "+=310px", left: "+=272px" });
+            $(opponent).animate({ top: "+=310px", left: "+=570px" });
         }
         else if (($(opponent).attr("name") === "han")) {
-            $(opponent).animate({ top: "+=310px" });
+            $(opponent).animate({ top: "+=310px", left: "+=298px" });
         }
         else if (($(opponent).attr("name") === "vader")) {
-            $(opponent).animate({ top: "+=310px" });
+            $(opponent).animate({ top: "+=310px", left: "+=27px" });
         }
         else if (($(opponent).attr("name") === "palpatine")) {
-            $(opponent).animate({ top: "+=310px" });
+            $(opponent).animate({ top: "+=310px", right: "+=247px" });
         }
 
     }
