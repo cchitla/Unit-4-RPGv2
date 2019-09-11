@@ -41,15 +41,9 @@ $(document).ready(function () {
     $("#display-chars").on("click", "img", function () {
         let clickedImage = this;
 
-        if (!userCharSelected) {
-            charIsNotSelected(clickedImage);
-        }
-        else if (userCharSelected) {
-            charIsSelected();
-        }
-
+    
         if (userCharSelected) {
-            charIsSelected();
+            charIsSelected(clickedImage);
         } else {
             charIsNotSelected(clickedImage);
         }
@@ -58,23 +52,41 @@ $(document).ready(function () {
     })
 
 
-    function charIsNotSelected(param1) {
-        $(param1).addClass("player-char");
+    function charIsNotSelected(char) {
+        $(char).addClass("player-char");
 
-        if ($(this).attr("name") === "luke") {
-            $(this).animate({ top: "+=310px" });
+        if ($(char).attr("name") === "luke") {
+            $(char).animate({ top: "+=310px" });
         }
-        else if (($(this).attr("name") === "han")) {
-            $(this).animate({ top: "+=310px", right: "+=272px" });
+        else if (($(char).attr("name") === "han")) {
+            $(char).animate({ top: "+=310px", right: "+=272px" });
         }
-        else if (($(this).attr("name") === "vader")) {
-            $(this).animate({ top: "+=310px", right: "+=544px" });
+        else if (($(char).attr("name") === "vader")) {
+            $(char).animate({ top: "+=310px", right: "+=544px" });
         }
-        else if (($(this).attr("name") === "palpatine")) {
-            $(this).animate({ top: "+=310px", right: "+=816px" });
+        else if (($(char).attr("name") === "palpatine")) {
+            $(char).animate({ top: "+=310px", right: "+=816px" });
         }
 
         userCharSelected = true;
+    }
+
+    function charIsSelected(opponent) {
+        $(opponent).addClass("defender");
+
+        if ($(opponent).attr("name") === "luke") {
+            $(opponent).animate({ top: "+=310px", left: "+=272px" });
+        }
+        else if (($(opponent).attr("name") === "han")) {
+            $(opponent).animate({ top: "+=310px" });
+        }
+        else if (($(opponent).attr("name") === "vader")) {
+            $(opponent).animate({ top: "+=310px" });
+        }
+        else if (($(opponent).attr("name") === "palpatine")) {
+            $(opponent).animate({ top: "+=310px" });
+        }
+
     }
 
 
