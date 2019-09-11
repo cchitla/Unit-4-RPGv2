@@ -17,7 +17,11 @@ body {
     text-align: center;
     font-size: 3em;
     letter-spacing: 30px;
-    color: rgb(240, 186, 61);
+    /* color: rgb(240, 186, 61); */
+    text-shadow: -2px -2px 0 rgb(240, 186, 61), 
+                  2px -2px 0 rgb(240, 186, 61),
+                 -2px 2px 0 rgb(240, 186, 61),
+                  2px 2px 0 rgb(240, 186, 61);
 }
 
 .text-outline {
@@ -34,5 +38,29 @@ button {
 }
 
 .user-char {
-    height: 300px;
+    height: 320px;
 }
+
+.stat-display {
+    text-align: center;
+    height: 30px;
+    text-shadow: -1px -1px 0 rgb(240, 186, 61), 
+                  1px -1px 0 rgb(240, 186, 61),
+                 -1px 1px 0 rgb(240, 186, 61),
+                  1px 1px 0 rgb(240, 186, 61);
+}
+
+/* .overlay:after {
+    content: "";
+    position: absolute;
+    width: 88%; height:15%;
+    top:0; left:6%;
+    background:rgba(0,0,0,0.6);
+    opacity: 0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.1s;
+}
+
+.overlay:hover:after {
+    opacity: 1;
+} */

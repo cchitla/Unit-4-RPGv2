@@ -33,19 +33,57 @@
     
     <div class="container">
 
+        <!-- new individual divs for each character -->
+        <div class="row">
+            <div id="luke" class="col-3 mt-3 display-chars"></div>
 
-        <div class="row text-center char-select">
-            <div id="display-chars" class="col-12 mt-2">
-        
+            <div id="han" class="col-3 mt-3 display-chars"></div>
+
+            <div id="vader" class="col-3 mt-3 display-chars"></div>
+
+            <div id="palpatine" class="col-3 mt-3 display-chars"></div>
+
+        </div>
+
+        <div class="row stat-display">
+            <div id="luke-stats" class="col-3">
+
             </div>
-        </div>  
+        </div>
+        <div class="row">
+            <div id="han-stats" class="col-3">
+
+            </div>
+        </div>
+        <div class="row">
+            <div id="vader-stats" class="col-3">
+
+            </div>
+        </div>
+        <div class="row">
+            <div id="palpatine-stats" class="col-3">
+
+            </div>
+        </div>
 
         <div class="row">
-            <div class="col-6 text-outline user-char">
+            <div class="col-4 text-outline user-char">
                 <span>Your character</span>
             </div>
-            <div class="col-6 text-outline user-char">
+            <div class="col-2 text-outline">
+                <br><br>
+                <p id="attacker-hp">hp here</p>
+                <p id="attacker-ap">ap here</p>
+                <p id="attacker-cp">cp here</p>
+            </div>
+            <div class="col-4 text-outline user-char">
                 <span>Defender</span>
+            </div>
+            <div class="col-2 text-outline">
+                <br><br>
+                <p id="defender-hp">hp here</p>
+                <p id="defender-ap">ap here</p>
+                <p id="defender-cp">cp here</p>
             </div>
 
 
@@ -57,6 +95,7 @@
         <div class="row">
             <div class="col-12">
                 <button class="text-outline">Attack</button>
+                <button id="auto-defeat" class="text-outline">Auto Defeat</button>
             </div>
         </div>
 
