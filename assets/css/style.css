@@ -25,6 +25,7 @@ body {
 }
 
 .text-outline {
+    color: black;
     font-size: 1.5em;
     text-shadow: -1px -1px 0 rgb(240, 186, 61), 
                   1px -1px 0 rgb(240, 186, 61),
