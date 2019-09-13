@@ -44,7 +44,7 @@ $(document).ready(function () {
         let chooseLuke = $("<img>");
         chooseLuke.attr({ "src": "assets/images/luke.jpg", "name": luke.name });
         chooseLuke.css({ "border": "3px solid black", "position": "relative", "width":"100%" });
-        chooseLuke.addClass("luke");
+        // chooseLuke.addClass("luke");
         $("#luke").append(chooseLuke);
 
         let chooseHan = $("<img>");
@@ -74,57 +74,38 @@ $(document).ready(function () {
 
     // mouse over stat info ===============================================================
 
+    ///stats don't remove properly
     $("#luke").mouseover(function() {
-        console.log($(this).attr("id"));
-        let stats = $("<span>");
-        stats.addClass("luke-stats");
-        stats.text(`HP:${luke.hp} AP:${luke.ap} CP:${luke.cp}`);
-        $("#luke-stats").append(stats);
+        $("#luke-stats").text(`HP:${luke.hp} AP:${luke.ap} CP:${luke.cp}`);
     })
-    $("#luke-stats").mouseleave(function(){
-        $(".luke-stats").remove();
+    $("#luke").mouseleave(function(){
+        $(".stat-row").empty();
     })
 
     $("#han").mouseover(function() {
-        console.log($(this).attr("id"));
-        let stats = $("<span>");
-        stats.addClass("han-stats");
-        stats.text(`HP:${han.hp} AP:${han.ap} CP:${han.cp}`);
-        $("#han-stats").append(stats);
+        $("#han-stats").text(`HP:${han.hp} AP:${han.ap} CP:${han.cp}`);
     })
-    $("#han-stats").mouseleave(function() {
-        $(".han-stats").remove();
+    $("#han").mouseleave(function() {
+        $(".stat-row").empty();
     })
 
     $("#vader").mouseover(function() {
-        console.log($(this).attr("id"));
-        let stats = $("<span>");
-        stats.addClass("vader-stats");
-        stats.text(`HP:${vader.hp} AP:${vader.ap} CP:${vader.cp}`);
-        $("#vader-stats").append(stats);
+        $("#vader-stats").text(`HP:${vader.hp} AP:${vader.ap} CP:${vader.cp}`);
     })
-    $("#vader-stats").mouseleave(function() {
-        $(".vader-stats").remove();
+    $("#vader").mouseleave(function() {
+        $(".stat-row").empty();
     })
 
     $("#palpatine").mouseover(function() {
-        console.log($(this).attr("id"));
-        let stats = $("<span>");
-        stats.addClass("palpatine-stats");
-        stats.text(`HP:${palpatine.hp} AP:${palpatine.ap} CP:${palpatine.cp}`);
-        $("#palpatine-stats").append(stats);
+        $("#palpatine-stats").text(`HP:${palpatine.hp} AP:${palpatine.ap} CP:${palpatine.cp}`);
     })
-    $("#palpatine-stats").mouseleave(function() {
-        $(".palpatine-stats").remove();
+    $("#palpatine").mouseleave(function() {
+        $(".stat-row").empty();
     })
 
 
 
    // ===========================================================================================
-
-
-
-
 
     //choosing user character and defenders
     $(".display-chars").on("click", "img", function () {
@@ -168,6 +149,10 @@ $(document).ready(function () {
         }
 
         userCharSelected = true;
+        $(".luke-stats").remove();
+        $(".han-stats").remove();
+        $(".vader-stats").remove();
+        $(".palpatine-stats").remove();
         
     }
 
@@ -235,45 +220,87 @@ $(document).ready(function () {
     // ==========================================================================================================
 
     //attack button to attack
-    $("#attack").on("click", function() {
+    $("#attack").on("click", attack);
+    
+    function attack() {
+        if (userCharSelected && defender1Selected) {
         defender.hp = defender.hp - attacker.ap;
         $("#defender-hp").text(defender.hp);
         attacker.ap = attacker.ap + 6;
         $("#attacker-ap").text(attacker.ap);
         attacker.hp = attacker.hp - defender.cp;
         $("#attacker-hp").text(attacker.hp);
+        }
 
-        if (defender.hp <= 0) {
+        if (attacker.hp <= 0) {
+            alert("you lose");
+            reset();
+        }
+
+        if (defender.hp <= 0 && !defender1Defeated) {
             $(".defender1").toggle("scale");
             setTimeout(deleteDefender1, 400);
             defender1Defeated = true;
+            console.log("#1: " + defender1Defeated);
         }
 
-        if (defender.hp <= 0) {
+        if (defender.hp <= 0 && defender1Defeated) {
             $(".defender2").toggle("scale");
             setTimeout(deleteDefender2, 400);
             defender2Defeated = true;
+            console.log("#2 " + defender2Defeated);
         }
-        if (defender.hp <= 0) {
+        if (defender.hp <= 0 && defender2Defeated) {
             $(".defender3").toggle("scale");
             setTimeout(deleteDefender3, 400);
             defender3Defeated = true;
+            console.log("#3 " + defender3Defeated);
         }
 
-    });
+        // if (defender1Defeated && defender2Defeated && defender3Defeated) {
+        //     alert("you won");
+        //     reset();
+        // }
+        
+    }
 
     //functions for setTimeout of defeat
     function deleteDefender1 () {
         $(".defender1").remove();
+        $(".defender-stat").text(" ");
     };
 
     function deleteDefender2 () {
         $(".defender2").remove();
+        $(".defender-stat").text(" ");
     };
 
     function deleteDefender3 () {
         $(".defender3").remove();
+        $(".defender-stat").text(" ");
     };
 
+
+
+    function reset() {
+        $(".display-chars").empty();
+        displayChars();
+        $(".attacker-stat").text(" ");
+        $(".defender-stat").text(" ");
+
+        luke = { name: "luke", hp: 120, ap: 18, cp: 15 }    
+        han = { name: "han", hp: 100, ap: 10, cp: 20 }
+        vader = { name: "vader", hp: 110, ap: 15, cp: 10 }
+        palpatine = { name: "palpatine", hp: 140, ap: 20, cp: 8}
+
+        userCharSelected = false;
+        defender1Selected = false;
+        defender2Selected = false;
+        defender3Selected = false;
+
+        defender1Defeated = false;
+        defender2Defeated = false;
+        defender3Defeated = false;
+    }
 
 });

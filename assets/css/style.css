@@ -7,6 +7,7 @@ body {
     font-family: "Star Jedi", arial;
     color: black;
     background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
     background-position-y: 85px;
     background-size: 100%;
 }
